@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
-import { peopleSelector } from "../store/peopleSelectors";
+import { favoritesSelector } from "../../favorites/store/favoriteSelectors";
 
 const PeopleNames = () => {
-  const peoples = useSelector(peopleSelector);
+  const favorites = useSelector(favoritesSelector);
 
   return (
     <div>
       <h1>I have access to this list of people</h1>
-      {peoples.map((people) => (
+      {favorites.map((people) => (
         <div key={people}>{people.name}</div>
       ))}
     </div>

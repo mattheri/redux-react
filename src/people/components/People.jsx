@@ -3,6 +3,7 @@ import PeopleService from "../service/PeopleService";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updatePeople } from "../store/peopleSlice";
+import FavoriteButton from "../../favorites/components/FavortieButton/FavoriteButton";
 
 const peopleService = new PeopleService();
 
@@ -21,9 +22,13 @@ const People = () => {
   return (
     <div>
       <h1>I will get a list of people</h1>
-      <pre style={{ textAlign: "left" }}>
-        {data && JSON.stringify(data, null, 2)}
-      </pre>
+      {data &&
+        data.results.map((people) => (
+          <div key={people.url}>
+            <FavoriteButton people={people} />
+            <h2>{people.name}</h2>
+          </div>
+        ))}
     </div>
   );
 };
